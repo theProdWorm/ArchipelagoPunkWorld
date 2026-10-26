@@ -106,11 +106,32 @@ class PunkWorld(World):
         self.multiworld.completion_condition[self.player] = victory_condition
 
     # Sends player options to client
-    # def fill_slot_data(self)\
-    #         -> dict[str, Any]:
-    #     option_fields = fields(self.options)
-    #     return {field.name: getattr(self.options, field.name) for field in option_fields}
+    def fill_slot_data(self)\
+            -> dict[str, Any]:
+        return {
+            "DeathLinkPenalty": int(self.options.death_link_penalty),
+            "DeathLinkDamage": int(self.options.death_link_damage),
 
+            "SmallEncounterShopUnlocks": int(self.options.small_encounter_shop_unlocks),
+            "AdvancedEncounterShopUnlocks": int(self.options.advanced_encounter_shop_unlocks),
+            "FinalBossShopUnlocks": int(self.options.final_boss_shop_unlocks),
+
+            "GeneratorCaches": int(self.options.generator_caches),
+            
+            "SeparateColoredCaches": bool(self.options.separate_colored_caches),
+            "WhiteCaches": int(self.options.white_caches),
+            "GreenCaches": int(self.options.green_caches),
+            "OrangeCaches": int(self.options.orange_caches),
+            "PinkCaches": int(self.options.pink_caches),
+            "PurpleCaches": int(self.options.purple_caches),
+            "YellowCaches": int(self.options.yellow_caches),
+
+            "FiberPlants": int(self.options.fiber_plants),
+            "GlandPlants": int(self.options.gland_plants),
+
+            "LootCrates": int(self.options.loot_crates)
+        }
+    
     def get_filler_item_name(self)\
             -> str:
         return self.random.choice([a for a in items.filler_table])

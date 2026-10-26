@@ -74,15 +74,6 @@ class Power3Requirements(Range):
     range_end = 60
     default = 40
 
-class ReplaceBossDropsWithShopUnlocks(DefaultOnToggle):
-    """
-    Whether to replace location checks associated with bosses/encounters
-    with unlocking items for purchase in the shop.
-    This allows for multiple items to be associated with defeating
-    a single boss/encounter.
-    """
-    display_name = "Bosses Unlock Shop Items"
-
 class SmallEncounterShopUnlocks(Range):
     """
     Number of items to unlock in the shop after completing a small encounter location check
@@ -301,7 +292,6 @@ punk_option_groups = [
     OptionGroup("Encounters/Bosses", [
         SmallEncounters,
         AdvancedEncounters,
-        ReplaceBossDropsWithShopUnlocks,
         SmallEncounterShopUnlocks,
         AdvancedEncounterShopUnlocks,
         FinalBossShopUnlocks
@@ -341,7 +331,6 @@ class PunkOptions(PerGameCommonOptions):
     power1_requirements: Power1Requirements
     power2_requirements: Power2Requirements
     power3_requirements: Power3Requirements
-    replace_boss_drops_with_shop_unlocks: ReplaceBossDropsWithShopUnlocks
     small_encounter_shop_unlocks: SmallEncounterShopUnlocks
     advanced_encounter_shop_unlocks: AdvancedEncounterShopUnlocks
     final_boss_shop_unlocks: FinalBossShopUnlocks
@@ -370,7 +359,6 @@ preset_minimum = {
     Victory: Victory.option_one,
     CustomBossCount: CustomBossCount.range_start,
     DeathLinkPenalty: DeathLinkPenalty.option_damage,
-    ReplaceBossDropsWithShopUnlocks: True,
     SmallEncounterShopUnlocks: SmallEncounterShopUnlocks.range_start,
     AdvancedEncounterShopUnlocks: AdvancedEncounterShopUnlocks.range_start,
     FinalBossShopUnlocks: FinalBossShopUnlocks.range_start,
