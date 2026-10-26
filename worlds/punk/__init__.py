@@ -2,8 +2,7 @@ from Options import Option
 from worlds.AutoWorld import World, WebWorld
 from BaseClasses import Tutorial, Item, ItemClassification
 
-from . import locations, regions
-from .items import PunkItem, item_table, module_table, currency_table, filler_table
+from . import locations, regions, items, rules
 from .options import PunkOptions
 
 from typing import Any
@@ -38,13 +37,14 @@ class PunkWorld(World):
     topology_present = False
     origin_region_name = "Power 0"
     
-    item_name_to_id = {name: data.code for name, data in item_table.items()}
+    item_name_to_id = {name: data.id for name, data in items.item_table.items()}
     location_name_to_id = locations.all_possible_locations
     
     item_name_groups = {
-        "Module": {name for name in module_table},
-        "Currency": {name for name in currency_table},
-        "Filler": {name for name in filler_table}
+        "Module": {name for name in items.module_table},
+        "Currency": {name for name in items.currency_table},
+        "Filler": {name for name in items.filler_table},
+        "Boss": {name for name in items.boss_table}
     }
 
     required_client_version = (0, 6, 8)
@@ -57,67 +57,63 @@ class PunkWorld(World):
 
         locations.create_locations(self)
 
-    def pre_fill(self)\
-            -> None:
-
-        if False: #not self.options.replace_boss_drops_with_shop_unlocks:
-            return
-
-        def fill_encounters(num: int, type: str, offset: int):
-            for n in range(num):
-                location = self.get_location(f"{type} {n+1}")
-                item = PunkItem(f"Completed {type}",
-                                ItemClassification.progression, offset+n, self.player)
-
-                self.multiworld.push_item(location, item, False)
-
-        boss_count = (4 if self.options.victory == 0 
-                    else (1 if self.options.victory == 1 
-                            else self.options.custom_boss_count))
-        
-        fill_encounters(self.options.small_encounters, "Small Encounter", 10000)
-        fill_encounters(self.options.advanced_encounters, "Advanced Encounter", 11000)
-        fill_encounters(boss_count, "Final Boss", 12000)
-
     def create_items(self)\
             -> None:
-        itempool = [name 
-                    for name, data in item_table.items()
-                    for _ in range(data.weight)]
-        itempool = random.sample(itempool, len(locations.all_locations))
+        for location in self.get_region("Power 1").locations:
+            item = self.create_item("Completed Small Encounter")
+            self.multiworld.push_item(location, item, False)
+        for location in self.get_region("Power 2").locations:
+            item = self.create_item("Completed Advanced Encounter")
+            self.multiworld.push_item(location, item, False)
+        for location in self.get_region("Power 3").locations:
+            item = self.create_item("Completed Final Boss")
+            self.multiworld.push_item(location, item, False)
 
-        self.multiworld.itempool += map(self.create_item, itempool)
+        itempool: list[Item] = []
+        unfilled_locations = [location for region in self.multiworld.get_regions(self.player)
+                              for location in region.locations
+                              if not location.item]
+
+        module_item_names = [name for name, data in items.module_table.items()
+                             for _ in range(data.weight)]
+        module_item_names = random.sample(module_item_names, self.options.power3_requirements)
+        itempool += map(self.create_item, module_item_names)
+
+        num_locations = len(unfilled_locations) - len(module_item_names)
+
+        filler_item_names = [name for name, data in items.item_table.items()
+                             if data.weight
+                             for _ in range(data.weight)]
+        filler_item_names = random.sample(filler_item_names, num_locations)
+        itempool += map(self.create_item, filler_item_names)
+
+        self.multiworld.itempool += itempool
 
     def create_item(self, name: str)\
             -> Item:
-        data = item_table[name]
-        return PunkItem(name, data.item_type, data.code, self.player)
+        data = items.item_table[name]
+        return items.PunkItem(name, data.item_type, data.id, self.player)
 
     def create_regions(self)\
             -> None:
         regions.create_regions(self)
+        
+        boss_count = (4 if self.options.victory == 0 
+                      else (1 if self.options.victory == 1 
+                            else self.options.custom_boss_count))
+
+        victory_condition = rules.get_boss_rule("Final Boss", boss_count).resolve(self)
+        self.multiworld.completion_condition[self.player] = victory_condition
 
     # Sends player options to client
-    def fill_slot_data(self)\
-            -> dict[str, Any]:
-        option_fields = fields(self.options)
-
-        slot_data = {}
-
-        for field in option_fields:
-            option = getattr(self.options, field.name)
-            value = option.value
-
-            if isinstance(value, Option):
-                print(f"Nested option object: {field.name} = {value}")
-
-            slot_data[field.name] = value
-
-        return slot_data
+    # def fill_slot_data(self)\
+    #         -> dict[str, Any]:
+    #     option_fields = fields(self.options)
+    #     return {field.name: getattr(self.options, field.name) for field in option_fields}
 
     def get_filler_item_name(self)\
             -> str:
-        return self.random.choice(filler_table)
+        return self.random.choice([a for a in items.filler_table])
 
     def custom_ut_sort(self, _, location_label: str) -> int:
         return self.location_name_to_id[location_label]
