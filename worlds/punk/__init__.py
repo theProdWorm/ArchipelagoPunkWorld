@@ -47,7 +47,6 @@ class PunkWorld(World):
         "Boss": {name for name in items.boss_table}
     }
 
-    required_client_version = (0, 6, 8)
     web = PunkWeb()
 
     def generate_early(self)\
@@ -117,14 +116,20 @@ class PunkWorld(World):
             "FinalBossShopUnlocks": int(self.options.final_boss_shop_unlocks),
 
             "GeneratorCaches": int(self.options.generator_caches),
-            
+
             "SeparateColoredCaches": bool(self.options.separate_colored_caches),
-            "WhiteCaches": int(self.options.white_caches),
-            "GreenCaches": int(self.options.green_caches),
-            "OrangeCaches": int(self.options.orange_caches),
-            "PinkCaches": int(self.options.pink_caches),
-            "PurpleCaches": int(self.options.purple_caches),
-            "YellowCaches": int(self.options.yellow_caches),
+            **({
+                "WhiteCaches": int(self.options.white_caches),
+                "GreenCaches": int(self.options.green_caches),
+                "OrangeCaches": int(self.options.orange_caches),
+                "PinkCaches": int(self.options.pink_caches),
+                "PurpleCaches": int(self.options.purple_caches),
+                "YellowCaches": int(self.options.yellow_caches),
+            } 
+            if self.options.separate_colored_caches 
+            else {
+                "TotalCaches": int(self.options.total_caches)
+            }),
 
             "FiberPlants": int(self.options.fiber_plants),
             "GlandPlants": int(self.options.gland_plants),

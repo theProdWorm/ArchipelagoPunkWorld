@@ -101,57 +101,6 @@ class FinalBossShopUnlocks(Range):
     range_end = 20
     default = 10
 
-class OverrideShopPrices(Toggle):
-    """
-    Whether to override the shop prices with custom prices
-    """
-    display_name = "Override Shop Prices"
-
-class FiberCost(Range):
-    """
-    Ignored if Override Shop Prices is false
-    """
-    display_name = "Fiber Cost"
-    range_start = 0
-    range_end = 5
-    default = 1
-
-class GlandCost(Range):
-    """
-    Ignored if Override Shop Prices is false
-    """
-    display_name = "Gland Cost"
-    range_start = 0
-    range_end = 5
-    default = 1
-
-class ChipCost(Range):
-    """
-    Ignored if Override Shop Prices is false
-    """
-    display_name = "Chip Cost"
-    range_start = 0
-    range_end = 5
-    default = 0
-
-class PowerstarCost(Range):
-    """
-    Ignored if Override Shop Prices is false
-    """
-    display_name = "Powerstar Cost"
-    range_start = 0
-    range_end = 5
-    default = 0
-
-class GeneratorCost(Range):
-    """
-    Ignored if Override Shop Prices is false
-    """
-    display_name = "Generator Cost"
-    range_start = 0
-    range_end = 5
-    default = 0
-
 class GeneratorCaches(Range):
     """
     Number of location checks that are tied to generator caches
@@ -296,14 +245,6 @@ punk_option_groups = [
         AdvancedEncounterShopUnlocks,
         FinalBossShopUnlocks
     ], start_collapsed=True),
-    OptionGroup("Cost Overrides", [
-        OverrideShopPrices,
-        FiberCost,
-        GlandCost,
-        ChipCost,
-        PowerstarCost,
-        GeneratorCost
-    ], start_collapsed=True),
     OptionGroup("Caches", [
         SeparateColoredCaches,
         TotalCaches,
@@ -334,12 +275,6 @@ class PunkOptions(PerGameCommonOptions):
     small_encounter_shop_unlocks: SmallEncounterShopUnlocks
     advanced_encounter_shop_unlocks: AdvancedEncounterShopUnlocks
     final_boss_shop_unlocks: FinalBossShopUnlocks
-    override_shop_prices: OverrideShopPrices
-    fiber_cost: FiberCost
-    gland_cost: GlandCost
-    chip_cost: ChipCost
-    powerstar_cost: PowerstarCost
-    generator_cost: GeneratorCost
     generator_caches: GeneratorCaches
     separate_colored_caches: SeparateColoredCaches
     total_caches: TotalCaches
@@ -362,12 +297,6 @@ preset_minimum = {
     SmallEncounterShopUnlocks: SmallEncounterShopUnlocks.range_start,
     AdvancedEncounterShopUnlocks: AdvancedEncounterShopUnlocks.range_start,
     FinalBossShopUnlocks: FinalBossShopUnlocks.range_start,
-    OverrideShopPrices: False,
-    FiberCost: FiberCost.range_start,
-    GlandCost: GlandCost.range_start,
-    ChipCost: ChipCost.range_start,
-    PowerstarCost: PowerstarCost.range_start,
-    GeneratorCost: GeneratorCost.range_start,
     GeneratorCaches: GeneratorCaches.range_start,
     SeparateColoredCaches: False,
     TotalCaches: TotalCaches.range_start,
