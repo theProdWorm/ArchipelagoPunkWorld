@@ -142,7 +142,7 @@ class PunkWorld(World):
             "FiberPlants": int(self.options.fiber_plants),
             "GlandPlants": int(self.options.gland_plants),
 
-            "LootCrates": int(self.options.loot_crates)
+            "Boxes": int(self.options.boxes)
         }
     
     def get_filler_item_name(self)\

@@ -224,11 +224,11 @@ class GlandPlants(Range):
     range_end = 20
     default = 10
 
-class LootCrates(Range):
+class Boxes(Range):
     """
-    Number of regular (square) loot crates to include as location checks
+    Number of regular (square) loot boxes to include as location checks
     """
-    display_name = "Loot Crates"
+    display_name = "Boxes"
     range_start = 0
     range_end = 50
     default = 0
@@ -260,7 +260,7 @@ punk_option_groups = [
     OptionGroup("Misc Loot", [
         FiberPlants,
         GlandPlants,
-        LootCrates
+        Boxes
     ], start_collapsed=True)
 ]
 
@@ -289,7 +289,7 @@ class PunkOptions(PerGameCommonOptions):
     advanced_encounters: AdvancedEncounters
     fiber_plants: FiberPlants
     gland_plants: GlandPlants
-    loot_crates: LootCrates
+    boxes: Boxes
 
 preset_minimum = {
     Victory: Victory.option_one,
@@ -311,5 +311,5 @@ preset_minimum = {
     AdvancedEncounters: AdvancedEncounters.range_start,
     FiberPlants: FiberPlants.range_start,
     GlandPlants: GlandPlants.range_start,
-    LootCrates: LootCrates.range_start
+    Boxes: Boxes.range_start
 }
