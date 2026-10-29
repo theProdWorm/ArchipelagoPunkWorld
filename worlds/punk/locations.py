@@ -65,10 +65,10 @@ def create_locations(world: "PunkWorld")\
                **{f"Yellow Crate {n+1}": n + 600 for n in range(options.yellow_crates)}
            }
            if options.separate_colored_crates
-           else {f"Loot Crate {n+1}": n + 700 for n in range(options.total_crates)}),
+           else {f"Crate {n+1}": n + 700 for n in range(options.total_crates)}),
         **{f"Fiber Plant {n+1}": n + 800 for n in range(options.fiber_plants)},
         **{f"Gland Plant {n+1}": n + 900 for n in range(options.gland_plants)},
-        **{f"Loot Crate {n+1}": n + 1000 for n in range(options.boxes)}
+        **{f"Box {n+1}": n + 1000 for n in range(options.boxes)}
     }
     
     small_encounters = {f"Small Encounter {n + 1}": n + 1100 for n in range(options.small_encounters)}
@@ -122,7 +122,7 @@ all_possible_locations : dict[str, int] = {
     **{f"Pink Crate {n + 1}": n + 400 for n in range(PinkCrates.range_end)},
     **{f"Purple Crate {n + 1}": n + 500 for n in range(PurpleCrates.range_end)},
     **{f"Yellow Crate {n + 1}": n + 600 for n in range(YellowCrates.range_end)},
-    **{f"Box {n + 1}": n + 700 for n in range(TotalCrates.range_end)},
+    **{f"Crate {n + 1}": n + 700 for n in range(TotalCrates.range_end)},
     **{f"Fiber Plant {n + 1}": n + 800 for n in range(FiberPlants.range_end)},
     **{f"Gland Plant {n + 1}": n + 900 for n in range(GlandPlants.range_end)},
     **{f"Box {n + 1}": n + 1000 for n in range(Boxes.range_end)},
