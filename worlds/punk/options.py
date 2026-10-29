@@ -102,88 +102,88 @@ class FinalBossShopUnlocks(Range):
     range_end = 20
     default = 10
 
-class GeneratorCaches(Range):
+class GeneratorCrates(Range):
     """
-    Number of location checks that are tied to generator caches
+    Number of location checks that are tied to generator crates
     """
-    display_name = "Generator Caches"
+    display_name = "Generator Crates"
     range_start = 5
     range_end = 20
     default = 8
 
-class SeparateColoredCaches(Toggle):
+class SeparateColoredCrates(Toggle):
     """
-    Whether to separate colored caches from each other, 
-    e.g., white caches and purple caches count as different locations
+    Whether to separate colored crates from each other, 
+    e.g., white crates and purple crates count as different locations
     """
-    display_name = "Separate Colored Caches"
+    display_name = "Separate Colored Crates"
 
-class TotalCaches(Range):
+class TotalCrates(Range):
     """
-    Ignored if Separate Colored Caches is set to true.
-    Total number of colored caches to replace with location checks
+    Ignored if Separate Colored Crates is set to true.
+    Total number of colored crates to replace with location checks
     """
-    display_name = "Total Caches"
+    display_name = "Total Crates"
     range_start = 10
     range_end = 50
     default = 25
 
-class WhiteCaches(Range):
+class WhiteCrates(Range):
     """
-    Ignored if Separate Colored Caches is set to false.
-    Number of location checks tied to white loot caches
+    Ignored if Separate Colored Crates is set to false.
+    Number of location checks tied to white loot crates
     """
-    display_name = "White Caches"
+    display_name = "White Crates"
     range_start = 2
     range_end = 10
     default = 3
     
-class GreenCaches(Range):
+class GreenCrates(Range):
     """
-    Ignored if Separate Colored Caches is set to false.
-    Number of location checks tied to green loot caches
+    Ignored if Separate Colored Crates is set to false.
+    Number of location checks tied to green loot crates
     """
-    display_name = "Green Caches"
+    display_name = "Green Crates"
     range_start = 2
     range_end = 10
     default = 3
     
-class OrangeCaches(Range):
+class OrangeCrates(Range):
     """
-    Ignored if Separate Colored Caches is set to false.
-    Number of location checks tied to orange loot caches
+    Ignored if Separate Colored Crates is set to false.
+    Number of location checks tied to orange loot crates
     """
-    display_name = "Orange Caches"
+    display_name = "Orange Crates"
     range_start = 2
     range_end = 10
     default = 3
     
-class PinkCaches(Range):
+class PinkCrates(Range):
     """
-    Ignored if Separate Colored Caches is set to false.
-    Number of location checks tied to pink loot caches
+    Ignored if Separate Colored Crates is set to false.
+    Number of location checks tied to pink loot crates
     """
-    display_name = "Pink Caches"
+    display_name = "Pink Crates"
     range_start = 2
     range_end = 10
     default = 3
     
-class PurpleCaches(Range):
+class PurpleCrates(Range):
     """
-    Ignored if Separate Colored Caches is set to false.
-    Number of location checks tied to purple loot caches
+    Ignored if Separate Colored Crates is set to false.
+    Number of location checks tied to purple loot crates
     """
-    display_name = "Purple Caches"
+    display_name = "Purple Crates"
     range_start = 2
     range_end = 10
     default = 3
 
-class YellowCaches(Range):
+class YellowCrates(Range):
     """
-    Ignored if Separate Colored Caches is set to false.
-    Number of location checks tied to yellow loot caches
+    Ignored if Separate Colored Crates is set to false.
+    Number of location checks tied to yellow loot crates
     """
-    display_name = "Yellow Caches"
+    display_name = "Yellow Crates"
     range_start = 2
     range_end = 10
     default = 3
@@ -246,16 +246,16 @@ punk_option_groups = [
         AdvancedEncounterShopUnlocks,
         FinalBossShopUnlocks
     ], start_collapsed=True),
-    OptionGroup("Caches", [
-        SeparateColoredCaches,
-        TotalCaches,
-        GeneratorCaches,
-        WhiteCaches,
-        GreenCaches,
-        OrangeCaches,
-        PinkCaches,
-        PurpleCaches,
-        YellowCaches
+    OptionGroup("Crates", [
+        SeparateColoredCrates,
+        TotalCrates,
+        GeneratorCrates,
+        WhiteCrates,
+        GreenCrates,
+        OrangeCrates,
+        PinkCrates,
+        PurpleCrates,
+        YellowCrates
     ], start_collapsed=True),
     OptionGroup("Misc Loot", [
         FiberPlants,
@@ -276,15 +276,15 @@ class PunkOptions(PerGameCommonOptions):
     small_encounter_shop_unlocks: SmallEncounterShopUnlocks
     advanced_encounter_shop_unlocks: AdvancedEncounterShopUnlocks
     final_boss_shop_unlocks: FinalBossShopUnlocks
-    generator_caches: GeneratorCaches
-    separate_colored_caches: SeparateColoredCaches
-    total_caches: TotalCaches
-    white_caches: WhiteCaches
-    green_caches: GreenCaches
-    orange_caches: OrangeCaches
-    pink_caches: PinkCaches
-    purple_caches: PurpleCaches
-    yellow_caches: YellowCaches
+    generator_crates: GeneratorCrates
+    separate_colored_crates: SeparateColoredCrates
+    total_crates: TotalCrates
+    white_crates: WhiteCrates
+    green_crates: GreenCrates
+    orange_crates: OrangeCrates
+    pink_crates: PinkCrates
+    purple_crates: PurpleCrates
+    yellow_crates: YellowCrates
     small_encounters: SmallEncounters
     advanced_encounters: AdvancedEncounters
     fiber_plants: FiberPlants
@@ -298,15 +298,15 @@ preset_minimum = {
     SmallEncounterShopUnlocks: SmallEncounterShopUnlocks.range_start,
     AdvancedEncounterShopUnlocks: AdvancedEncounterShopUnlocks.range_start,
     FinalBossShopUnlocks: FinalBossShopUnlocks.range_start,
-    GeneratorCaches: GeneratorCaches.range_start,
-    SeparateColoredCaches: False,
-    TotalCaches: TotalCaches.range_start,
-    WhiteCaches: WhiteCaches.range_start,
-    GreenCaches: GreenCaches.range_start,
-    OrangeCaches: OrangeCaches.range_start,
-    PinkCaches: PinkCaches.range_start,
-    PurpleCaches: PurpleCaches.range_start,
-    YellowCaches: YellowCaches.range_start,
+    GeneratorCrates: GeneratorCrates.range_start,
+    SeparateColoredCrates: False,
+    TotalCrates: TotalCrates.range_start,
+    WhiteCrates: WhiteCrates.range_start,
+    GreenCrates: GreenCrates.range_start,
+    OrangeCrates: OrangeCrates.range_start,
+    PinkCrates: PinkCrates.range_start,
+    PurpleCrates: PurpleCrates.range_start,
+    YellowCrates: YellowCrates.range_start,
     SmallEncounters: SmallEncounters.range_start,
     AdvancedEncounters: AdvancedEncounters.range_start,
     FiberPlants: FiberPlants.range_start,

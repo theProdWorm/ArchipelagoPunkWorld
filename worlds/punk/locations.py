@@ -54,18 +54,18 @@ def create_locations(world: "PunkWorld")\
     global pfb_shop_unlocks
 
     default_accessible = {
-        **{f"Generator Cache {n+1}": n + 1 for n in range(options.generator_caches)},
+        **{f"Generator Crate {n+1}": n + 1 for n in range(options.generator_crates)},
 
         **({
-               **{f"White Cache {n+1}": n + 100 for n in range(options.white_caches)},
-               **{f"Green Cache {n+1}": n + 200 for n in range(options.green_caches)},
-               **{f"Orange Cache {n+1}": n + 300 for n in range(options.orange_caches)},
-               **{f"Pink Cache {n+1}": n + 400 for n in range(options.pink_caches)},
-               **{f"Purple Cache {n+1}": n + 500 for n in range(options.purple_caches)},
-               **{f"Yellow Cache {n+1}": n + 600 for n in range(options.yellow_caches)}
+               **{f"White Crate {n+1}": n + 100 for n in range(options.white_crates)},
+               **{f"Green Crate {n+1}": n + 200 for n in range(options.green_crates)},
+               **{f"Orange Crate {n+1}": n + 300 for n in range(options.orange_crates)},
+               **{f"Pink Crate {n+1}": n + 400 for n in range(options.pink_crates)},
+               **{f"Purple Crate {n+1}": n + 500 for n in range(options.purple_crates)},
+               **{f"Yellow Crate {n+1}": n + 600 for n in range(options.yellow_crates)}
            }
-           if options.separate_colored_caches
-           else {f"Loot Cache {n+1}": n + 700 for n in range(options.total_caches)}),
+           if options.separate_colored_crates
+           else {f"Loot Crate {n+1}": n + 700 for n in range(options.total_crates)}),
         **{f"Fiber Plant {n+1}": n + 800 for n in range(options.fiber_plants)},
         **{f"Gland Plant {n+1}": n + 900 for n in range(options.gland_plants)},
         **{f"Loot Crate {n+1}": n + 1000 for n in range(options.loot_crates)}
@@ -115,14 +115,14 @@ def create_locations(world: "PunkWorld")\
     #     print(loc)
 
 all_possible_locations : dict[str, int] = {
-    **{f"Generator Cache {n + 1}": n + 1 for n in range(GeneratorCaches.range_end)},
-    **{f"White Cache {n + 1}": n + 100 for n in range(WhiteCaches.range_end)},
-    **{f"Green Cache {n + 1}": n + 200 for n in range(GreenCaches.range_end)},
-    **{f"Orange Cache {n + 1}": n + 300 for n in range(OrangeCaches.range_end)},
-    **{f"Pink Cache {n + 1}": n + 400 for n in range(PinkCaches.range_end)},
-    **{f"Purple Cache {n + 1}": n + 500 for n in range(PurpleCaches.range_end)},
-    **{f"Yellow Cache {n + 1}": n + 600 for n in range(YellowCaches.range_end)},
-    **{f"Loot Cache {n + 1}": n + 700 for n in range(TotalCaches.range_end)},
+    **{f"Generator Crate {n + 1}": n + 1 for n in range(GeneratorCrates.range_end)},
+    **{f"White Crate {n + 1}": n + 100 for n in range(WhiteCrates.range_end)},
+    **{f"Green Crate {n + 1}": n + 200 for n in range(GreenCrates.range_end)},
+    **{f"Orange Crate {n + 1}": n + 300 for n in range(OrangeCrates.range_end)},
+    **{f"Pink Crate {n + 1}": n + 400 for n in range(PinkCrates.range_end)},
+    **{f"Purple Crate {n + 1}": n + 500 for n in range(PurpleCrates.range_end)},
+    **{f"Yellow Crate {n + 1}": n + 600 for n in range(YellowCrates.range_end)},
+    **{f"Loot Crate {n + 1}": n + 700 for n in range(TotalCrates.range_end)},
     **{f"Fiber Plant {n + 1}": n + 800 for n in range(FiberPlants.range_end)},
     **{f"Gland Plant {n + 1}": n + 900 for n in range(GlandPlants.range_end)},
     **{f"Loot Crate {n + 1}": n + 1000 for n in range(LootCrates.range_end)},

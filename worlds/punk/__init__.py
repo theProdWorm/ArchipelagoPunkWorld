@@ -123,20 +123,20 @@ class PunkWorld(World):
             "AdvancedEncounterShopUnlocks": int(self.options.advanced_encounter_shop_unlocks),
             "FinalBossShopUnlocks": int(self.options.final_boss_shop_unlocks),
 
-            "GeneratorCaches": int(self.options.generator_caches),
+            "GeneratorCrates": int(self.options.generator_crates),
 
-            "SeparateColoredCaches": bool(self.options.separate_colored_caches),
+            "SeparateColoredCrates": bool(self.options.separate_colored_crates),
             **({
-                "WhiteCaches": int(self.options.white_caches),
-                "GreenCaches": int(self.options.green_caches),
-                "OrangeCaches": int(self.options.orange_caches),
-                "PinkCaches": int(self.options.pink_caches),
-                "PurpleCaches": int(self.options.purple_caches),
-                "YellowCaches": int(self.options.yellow_caches),
+                "WhiteCrates": int(self.options.white_crates),
+                "GreenCrates": int(self.options.green_crates),
+                "OrangeCrates": int(self.options.orange_crates),
+                "PinkCrates": int(self.options.pink_crates),
+                "PurpleCrates": int(self.options.purple_crates),
+                "YellowCrates": int(self.options.yellow_crates),
             } 
-            if self.options.separate_colored_caches 
+            if self.options.separate_colored_crates 
             else {
-                "TotalCaches": int(self.options.total_caches)
+                "TotalCrates": int(self.options.total_crates)
             }),
 
             "FiberPlants": int(self.options.fiber_plants),
