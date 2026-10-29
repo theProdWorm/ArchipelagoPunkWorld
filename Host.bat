@@ -1,7 +1,4 @@
 @echo off
-setlocal
-pushd "%~dp0"
-
 set output_dir=%cd%\output
 
 for /f %%f in ('dir "%output_dir%\*.zip" /b /a-d /o-d /tc') do (

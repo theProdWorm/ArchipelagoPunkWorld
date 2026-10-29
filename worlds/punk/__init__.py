@@ -107,9 +107,17 @@ class PunkWorld(World):
     # Sends player options to client
     def fill_slot_data(self)\
             -> dict[str, Any]:
+        boss_count = (4 if self.options.victory == 0 
+                        else (1 if self.options.victory == 1 
+                            else self.options.custom_boss_count))
+
         return {
             "DeathLinkPenalty": int(self.options.death_link_penalty),
             "DeathLinkDamage": int(self.options.death_link_damage),
+
+            "SmallEncounters": int(self.options.small_encounters),
+            "AdvancedEncounters": int(self.options.advanced_encounters),
+            "Finalbosses": boss_count,
 
             "SmallEncounterShopUnlocks": int(self.options.small_encounter_shop_unlocks),
             "AdvancedEncounterShopUnlocks": int(self.options.advanced_encounter_shop_unlocks),

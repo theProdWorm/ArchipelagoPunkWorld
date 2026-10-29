@@ -11,6 +11,7 @@ class Victory(Choice):
     option_all = 0
     option_one = 1
     option_custom = 2
+    #option_mimic = 3
 
 class CustomBossCount(Range):
     """
