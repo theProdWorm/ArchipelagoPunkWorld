@@ -75,32 +75,40 @@ class Power3Requirements(Range):
     range_end = 60
     default = 40
 
-class SmallEncounterShopUnlocks(Range):
+class EncountersUnlockShopItems(DefaultOnToggle):
     """
-    Number of items to unlock in the shop after completing a small encounter location check
+    Whether encounters (including final bosses) should unlock items in the shop.
+    On: Bosses drop loot (such as currency) like normal, but unlock checks in the shop.
+    Off: Replaces boss loot with location checks.
     """
-    display_name = "Small Encounter Shop Unlocks"
-    range_start = 1
-    range_end = 5
-    default = 2
+    display_name = "Encounters Unlock Shop Items"
 
-class AdvancedEncounterShopUnlocks(Range):
-    """
-    Number of items to unlock in the shop after completing an advanced encounter location check
-    """
-    display_name = "Advanced Encounter Shop Unlocks"
-    range_start = 2
-    range_end = 10
-    default = 5
+# class SmallEncounterShopUnlocks(Range):
+#     """
+#     Number of items to unlock in the shop after completing a small encounter location check
+#     """
+#     display_name = "Small Encounter Shop Unlocks"
+#     range_start = 1
+#     range_end = 5
+#     default = 2
 
-class FinalBossShopUnlocks(Range):
-    """
-    Number of items to unlock in the shop after completing a final boss location check
-    """
-    display_name = "Final Boss Shop Unlocks"
-    range_start = 3
-    range_end = 20
-    default = 10
+# class AdvancedEncounterShopUnlocks(Range):
+#     """
+#     Number of items to unlock in the shop after completing an advanced encounter location check
+#     """
+#     display_name = "Advanced Encounter Shop Unlocks"
+#     range_start = 2
+#     range_end = 10
+#     default = 5
+
+# class FinalBossShopUnlocks(Range):
+#     """
+#     Number of items to unlock in the shop after completing a final boss location check
+#     """
+#     display_name = "Final Boss Shop Unlocks"
+#     range_start = 3
+#     range_end = 20
+#     default = 10
 
 class GeneratorCrates(Range):
     """
@@ -242,9 +250,9 @@ punk_option_groups = [
     OptionGroup("Encounters/Bosses", [
         SmallEncounters,
         AdvancedEncounters,
-        SmallEncounterShopUnlocks,
-        AdvancedEncounterShopUnlocks,
-        FinalBossShopUnlocks
+        # SmallEncounterShopUnlocks,
+        # AdvancedEncounterShopUnlocks,
+        # FinalBossShopUnlocks
     ], start_collapsed=True),
     OptionGroup("Crates", [
         SeparateColoredCrates,
@@ -273,9 +281,9 @@ class PunkOptions(PerGameCommonOptions):
     power1_requirements: Power1Requirements
     power2_requirements: Power2Requirements
     power3_requirements: Power3Requirements
-    small_encounter_shop_unlocks: SmallEncounterShopUnlocks
-    advanced_encounter_shop_unlocks: AdvancedEncounterShopUnlocks
-    final_boss_shop_unlocks: FinalBossShopUnlocks
+    # small_encounter_shop_unlocks: SmallEncounterShopUnlocks
+    # advanced_encounter_shop_unlocks: AdvancedEncounterShopUnlocks
+    # final_boss_shop_unlocks: FinalBossShopUnlocks
     generator_crates: GeneratorCrates
     separate_colored_crates: SeparateColoredCrates
     total_crates: TotalCrates
@@ -295,9 +303,9 @@ preset_minimum = {
     Victory: Victory.option_one,
     CustomBossCount: CustomBossCount.range_start,
     DeathLinkPenalty: DeathLinkPenalty.option_damage,
-    SmallEncounterShopUnlocks: SmallEncounterShopUnlocks.range_start,
-    AdvancedEncounterShopUnlocks: AdvancedEncounterShopUnlocks.range_start,
-    FinalBossShopUnlocks: FinalBossShopUnlocks.range_start,
+    # SmallEncounterShopUnlocks: SmallEncounterShopUnlocks.range_start,
+    # AdvancedEncounterShopUnlocks: AdvancedEncounterShopUnlocks.range_start,
+    # FinalBossShopUnlocks: FinalBossShopUnlocks.range_start,
     GeneratorCrates: GeneratorCrates.range_start,
     SeparateColoredCrates: False,
     TotalCrates: TotalCrates.range_start,

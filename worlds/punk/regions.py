@@ -28,18 +28,18 @@ def create_connections(world: "PunkWorld", regions: list[Region])\
     for n in range(3):
         connect(f"Power {n}", f"Power {n+1}", rules.get_power_rule(n+1, world.options))
 
-    i = 1
-    for region in locations.pse_shop_unlocks:
-        connect("Power 1", region, rules.get_boss_rule("Small Encounter", i))
-        i += 1
-    i = 1
-    for region in locations.pae_shop_unlocks:
-        connect("Power 2", region, rules.get_boss_rule("Advanced Encounter", i))
-        i += 1
-    i = 1
-    for region in locations.pfb_shop_unlocks:
-        connect("Power 3", region, rules.get_boss_rule("Final Boss", i))
-        i += 1
+    # i = 1
+    # for region in locations.pse_shop_unlocks:
+    #     connect("Power 1", region, rules.get_boss_rule("Small Encounter", i))
+    #     i += 1
+    # i = 1
+    # for region in locations.pae_shop_unlocks:
+    #     connect("Power 2", region, rules.get_boss_rule("Advanced Encounter", i))
+    #     i += 1
+    # i = 1
+    # for region in locations.pfb_shop_unlocks:
+    #     connect("Power 3", region, rules.get_boss_rule("Final Boss", i))
+    #     i += 1
     
 def create_regions(world: "PunkWorld")\
         -> list[Region]:

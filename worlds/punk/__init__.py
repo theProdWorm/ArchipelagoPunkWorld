@@ -117,11 +117,12 @@ class PunkWorld(World):
 
             "SmallEncounters": int(self.options.small_encounters),
             "AdvancedEncounters": int(self.options.advanced_encounters),
-            "Finalbosses": boss_count,
+            "FinalBosses": boss_count,
 
-            "SmallEncounterShopUnlocks": int(self.options.small_encounter_shop_unlocks),
-            "AdvancedEncounterShopUnlocks": int(self.options.advanced_encounter_shop_unlocks),
-            "FinalBossShopUnlocks": int(self.options.final_boss_shop_unlocks),
+            # "EncountersUnlockShopItems": bool(self.options.encounters_unlock_shop_items),
+            # "SmallEncounterShopUnlocks": int(self.options.small_encounter_shop_unlocks),
+            # "AdvancedEncounterShopUnlocks": int(self.options.advanced_encounter_shop_unlocks),
+            # "FinalBossShopUnlocks": int(self.options.final_boss_shop_unlocks),
 
             "GeneratorCrates": int(self.options.generator_crates),
 
