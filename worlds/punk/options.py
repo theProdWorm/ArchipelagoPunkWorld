@@ -75,6 +75,24 @@ class Power3Requirements(Range):
     range_end = 60
     default = 40
 
+class SmallEncounters(Range):
+    """
+    Number of small/regular encounters to include as location checks
+    """
+    display_name = "Small Encounters"
+    range_start = 0
+    range_end = 10
+    default = 2
+
+class AdvancedEncounters(Range):
+    """
+    Number of advanced encounters to include as location checks
+    """
+    display_name = "Advanced Encounters"
+    range_start = 0
+    range_end = 10
+    default = 3
+
 class EncountersUnlockShopItems(DefaultOnToggle):
     """
     Whether encounters (including final bosses) should unlock items in the shop.
@@ -83,32 +101,32 @@ class EncountersUnlockShopItems(DefaultOnToggle):
     """
     display_name = "Encounters Unlock Shop Items"
 
-# class SmallEncounterShopUnlocks(Range):
-#     """
-#     Number of items to unlock in the shop after completing a small encounter location check
-#     """
-#     display_name = "Small Encounter Shop Unlocks"
-#     range_start = 1
-#     range_end = 5
-#     default = 2
+class SmallEncounterShopUnlocks(Range):
+    """
+    Number of items to unlock in the shop after completing a small encounter location check
+    """
+    display_name = "Small Encounter Shop Unlocks"
+    range_start = 1
+    range_end = 5
+    default = 2
 
-# class AdvancedEncounterShopUnlocks(Range):
-#     """
-#     Number of items to unlock in the shop after completing an advanced encounter location check
-#     """
-#     display_name = "Advanced Encounter Shop Unlocks"
-#     range_start = 2
-#     range_end = 10
-#     default = 5
+class AdvancedEncounterShopUnlocks(Range):
+    """
+    Number of items to unlock in the shop after completing an advanced encounter location check
+    """
+    display_name = "Advanced Encounter Shop Unlocks"
+    range_start = 2
+    range_end = 10
+    default = 5
 
-# class FinalBossShopUnlocks(Range):
-#     """
-#     Number of items to unlock in the shop after completing a final boss location check
-#     """
-#     display_name = "Final Boss Shop Unlocks"
-#     range_start = 3
-#     range_end = 20
-#     default = 10
+class FinalBossShopUnlocks(Range):
+    """
+    Number of items to unlock in the shop after completing a final boss location check
+    """
+    display_name = "Final Boss Shop Unlocks"
+    range_start = 3
+    range_end = 20
+    default = 10
 
 class GeneratorCrates(Range):
     """
@@ -121,15 +139,15 @@ class GeneratorCrates(Range):
 
 class SeparateColoredCrates(Toggle):
     """
-    Whether to separate colored crates from each other, 
-    e.g., white crates and purple crates count as different locations
+    Whether to separate colored ball crates from each other, 
+    e.g., white crates and green crates count as different locations
     """
     display_name = "Separate Colored Crates"
 
 class TotalCrates(Range):
     """
     Ignored if Separate Colored Crates is set to true.
-    Total number of colored crates to replace with location checks
+    Total number of colored ball crates to replace with location checks
     """
     display_name = "Total Crates"
     range_start = 10
@@ -149,7 +167,7 @@ class WhiteCrates(Range):
 class GreenCrates(Range):
     """
     Ignored if Separate Colored Crates is set to false.
-    Number of location checks tied to green loot crates
+    Number of location checks tied to green (booster) loot crates
     """
     display_name = "Green Crates"
     range_start = 2
@@ -159,7 +177,7 @@ class GreenCrates(Range):
 class OrangeCrates(Range):
     """
     Ignored if Separate Colored Crates is set to false.
-    Number of location checks tied to orange loot crates
+    Number of location checks tied to orange (caps) loot crates
     """
     display_name = "Orange Crates"
     range_start = 2
@@ -169,7 +187,7 @@ class OrangeCrates(Range):
 class PinkCrates(Range):
     """
     Ignored if Separate Colored Crates is set to false.
-    Number of location checks tied to pink loot crates
+    Number of location checks tied to pink (gel) loot crates
     """
     display_name = "Pink Crates"
     range_start = 2
@@ -179,7 +197,7 @@ class PinkCrates(Range):
 class PurpleCrates(Range):
     """
     Ignored if Separate Colored Crates is set to false.
-    Number of location checks tied to purple loot crates
+    Number of location checks tied to purple (tech) loot crates
     """
     display_name = "Purple Crates"
     range_start = 2
@@ -189,28 +207,10 @@ class PurpleCrates(Range):
 class YellowCrates(Range):
     """
     Ignored if Separate Colored Crates is set to false.
-    Number of location checks tied to yellow loot crates
+    Number of location checks tied to yellow (gold) loot crates
     """
     display_name = "Yellow Crates"
     range_start = 2
-    range_end = 10
-    default = 3
-
-class SmallEncounters(Range):
-    """
-    Number of small/regular encounters to include as location checks
-    """
-    display_name = "Small Encounters"
-    range_start = 0
-    range_end = 10
-    default = 2
-
-class AdvancedEncounters(Range):
-    """
-    Number of advanced encounters to include as location checks
-    """
-    display_name = "Advanced Encounters"
-    range_start = 0
     range_end = 10
     default = 3
 
@@ -248,11 +248,12 @@ punk_option_groups = [
         Power3Requirements,
     ], start_collapsed=True),
     OptionGroup("Encounters/Bosses", [
+        EncountersUnlockShopItems,
         SmallEncounters,
         AdvancedEncounters,
-        # SmallEncounterShopUnlocks,
-        # AdvancedEncounterShopUnlocks,
-        # FinalBossShopUnlocks
+        SmallEncounterShopUnlocks,
+        AdvancedEncounterShopUnlocks,
+        FinalBossShopUnlocks
     ], start_collapsed=True),
     OptionGroup("Crates", [
         SeparateColoredCrates,
@@ -281,9 +282,12 @@ class PunkOptions(PerGameCommonOptions):
     power1_requirements: Power1Requirements
     power2_requirements: Power2Requirements
     power3_requirements: Power3Requirements
-    # small_encounter_shop_unlocks: SmallEncounterShopUnlocks
-    # advanced_encounter_shop_unlocks: AdvancedEncounterShopUnlocks
-    # final_boss_shop_unlocks: FinalBossShopUnlocks
+    small_encounters: SmallEncounters
+    advanced_encounters: AdvancedEncounters
+    encounters_unlock_shop_items: EncountersUnlockShopItems
+    small_encounter_shop_unlocks: SmallEncounterShopUnlocks
+    advanced_encounter_shop_unlocks: AdvancedEncounterShopUnlocks
+    final_boss_shop_unlocks: FinalBossShopUnlocks
     generator_crates: GeneratorCrates
     separate_colored_crates: SeparateColoredCrates
     total_crates: TotalCrates
@@ -293,31 +297,6 @@ class PunkOptions(PerGameCommonOptions):
     pink_crates: PinkCrates
     purple_crates: PurpleCrates
     yellow_crates: YellowCrates
-    small_encounters: SmallEncounters
-    advanced_encounters: AdvancedEncounters
     fiber_plants: FiberPlants
     gland_plants: GlandPlants
     boxes: Boxes
-
-preset_minimum = {
-    Victory: Victory.option_one,
-    CustomBossCount: CustomBossCount.range_start,
-    DeathLinkPenalty: DeathLinkPenalty.option_damage,
-    # SmallEncounterShopUnlocks: SmallEncounterShopUnlocks.range_start,
-    # AdvancedEncounterShopUnlocks: AdvancedEncounterShopUnlocks.range_start,
-    # FinalBossShopUnlocks: FinalBossShopUnlocks.range_start,
-    GeneratorCrates: GeneratorCrates.range_start,
-    SeparateColoredCrates: False,
-    TotalCrates: TotalCrates.range_start,
-    WhiteCrates: WhiteCrates.range_start,
-    GreenCrates: GreenCrates.range_start,
-    OrangeCrates: OrangeCrates.range_start,
-    PinkCrates: PinkCrates.range_start,
-    PurpleCrates: PurpleCrates.range_start,
-    YellowCrates: YellowCrates.range_start,
-    SmallEncounters: SmallEncounters.range_start,
-    AdvancedEncounters: AdvancedEncounters.range_start,
-    FiberPlants: FiberPlants.range_start,
-    GlandPlants: GlandPlants.range_start,
-    Boxes: Boxes.range_start
-}
